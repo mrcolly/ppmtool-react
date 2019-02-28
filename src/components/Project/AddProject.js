@@ -14,7 +14,10 @@ class AddProject extends Component {
       description: "",
       startDate: "",
       endDate: "",
-      errors: {}
+      errors: {
+        message: "",
+        errors: {}
+      }
     };
 
     this.onChange = this.onChange.bind(this);
@@ -60,44 +63,48 @@ class AddProject extends Component {
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg ", {
-                      "is-invalid": errors.name
+                      "is-invalid": errors.errors.name
                     })}
                     placeholder="Project Name"
                     name="name"
                     value={this.state.name}
                     onChange={this.onChange.bind(this)}
                   />
-                  {errors.name && (
-                    <div className="invalid-feedback">{errors.name}</div>
+                  {errors.errors.name && (
+                    <div className="invalid-feedback">{errors.errors.name}</div>
                   )}
                 </div>
                 <div className="form-group">
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg ", {
-                      "is-invalid": errors.identifier
+                      "is-invalid": errors.errors.identifier
                     })}
                     placeholder="Unique Project ID"
                     name="identifier"
                     value={this.state.identifier}
                     onChange={this.onChange.bind(this)}
                   />
-                  {errors.identifier && (
-                    <div className="invalid-feedback">{errors.identifier}</div>
+                  {errors.errors.identifier && (
+                    <div className="invalid-feedback">
+                      {errors.errors.identifier}
+                    </div>
                   )}
                 </div>
                 <div className="form-group">
                   <textarea
                     className={classnames("form-control form-control-lg ", {
-                      "is-invalid": errors.description
+                      "is-invalid": errors.errors.description
                     })}
                     placeholder="Project Description"
                     name="description"
                     value={this.state.description}
                     onChange={this.onChange.bind(this)}
                   />
-                  {errors.description && (
-                    <div className="invalid-feedback">{errors.description}</div>
+                  {errors.errors.description && (
+                    <div className="invalid-feedback">
+                      {errors.errors.description}
+                    </div>
                   )}
                 </div>
                 <h6>Start Date</h6>
